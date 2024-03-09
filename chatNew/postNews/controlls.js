@@ -7,6 +7,7 @@ import {
     deleteAllPostServices
 } from "./services.js";
 
+const chat = 'postNews';
 
 export const getPostsController = async (req, res) => {
     try {
@@ -22,7 +23,7 @@ export const addPostController = async (req, res, io) => {
     try {
         const data = await addNewPostService(req.body);
 
-        io.emit('dataUpdated', data);
+        io.emit(`dataUpdated${chat}`, data);
         res.json({data, status: 'successPOST'});
     } catch (err) {
         res.status(500).json({message: err.message});
@@ -33,7 +34,7 @@ export const deletePostController = async (req, res, io) => {
     try {
         const data = await deletePostServices(req.params.id);
 
-        io.emit('dataDelete', data);
+        io.emit(`dataDelete${chat}`, data);
         res.json({data, status: 'successDELETE'});
     } catch (err) {
         res.status(500).json({message: err.message});
@@ -43,7 +44,7 @@ export const deletePostController = async (req, res, io) => {
 export const editPostController = async (req, res, io) => {
     try {
         const data = await editPostService(req.params.id, req.body);
-        io.emit('dataEdit', data);
+        io.emit(`dataEdit${chat}`, data);
         res.json({data, status: 'successPUT'});
     } catch (err) {
         res.status(500).json({message: err.message});
