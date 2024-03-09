@@ -3,6 +3,8 @@ import { postsRouter } from "./chat/posts/routes.js";
 import { usersRouter } from "./chat/users/routes.js";
 import { userNewsRouter } from "./chatNew/userNews/routes.js";
 import {postNewsRouter} from "./chatNew/postNews/routes.js";
+import { userLegchsRouter } from "./chatLegch/userLegchs/routes.js";
+import { postLegchsRouter } from "./chatLegch/postLegchs/routes.js";
 import {Server} from "socket.io";
 import { createServer } from 'http';
 
@@ -21,6 +23,9 @@ app.use("/users", usersRouter);
 
 app.use("/postNews", postNewsRouter(io));
 app.use("/userNews", userNewsRouter);
+
+app.use("/postLegchs", postLegchsRouter(io));
+app.use("/userLegchs", userLegchsRouter);
 
 app.get('/', (req, res) => {
     res.send('<h1>Chat</h1>');

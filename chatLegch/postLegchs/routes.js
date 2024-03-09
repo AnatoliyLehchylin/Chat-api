@@ -8,7 +8,7 @@ import {
     deleteAllPostController
 } from "./controlls.js";
 
-export const postNewsRouter = (io) => {
+export const postLegchsRouter = (io) => {
     const router = Router();
 
     router.get("/", getPostsController);
