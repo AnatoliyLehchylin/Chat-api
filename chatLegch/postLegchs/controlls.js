@@ -7,7 +7,7 @@ import {
     deleteAllPostServices
 } from "./services.js";
 
-const chat = 'postNews';
+const chat = 'postLegchs';
 
 export const getPostsController = async (req, res) => {
     try {
